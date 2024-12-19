@@ -1,0 +1,22 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    command: postgres -c 'max_connections=250'
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=b69sz7F$
+      - POSTGRES_DB=connecttalent
+    volumes:
+      - /root/postgres-data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - connecttalent
+
+networks:
+  connecttalent:
+    driver: bridge
+volumes:
+  postgres-data:
